@@ -1,0 +1,129 @@
+class Ui_ASQtClass
+{
+public:
+	QWidget* centralWidget;
+	QTextBrowser* OutputDeivceBrouser;
+	QLabel* label;
+	QLabel* label_2;
+	QTextBrowser* PlayFileBrouser;
+	QPushButton* PlayButton;
+	QPushButton* StopButton;
+	QPushButton* PauseButton;
+	QGroupBox* groupBox;
+	QPushButton* RevEnable;
+	QPushButton* RevDisable;
+	QPushButton* RevApply;
+	QDoubleSpinBox* DelayTimeBox;
+	QLabel* label_3;
+	QLabel* label_4;
+	QLabel* label_5;
+	QDoubleSpinBox* DecayLevelBox;
+	QDoubleSpinBox* FeedBackBox;
+	QMenuBar* menuBar;
+	QToolBar* mainToolBar;
+	QStatusBar* statusBar;
+
+	void setupUi(QMainWindow* ASQtClass)
+	{
+		if (ASQtClass->objectName().isEmpty())
+			ASQtClass->setObjectName(QString::fromUtf8("ASQtClass"));
+		ASQtClass->resize(464, 359);
+		centralWidget = new QWidget(ASQtClass);
+		centralWidget->setObjectName(QString::fromUtf8("centralWidget"));
+		OutputDeivceBrouser = new QTextBrowser(centralWidget);
+		OutputDeivceBrouser->setObjectName(QString::fromUtf8("OutputDeivceBrouser"));
+		OutputDeivceBrouser->setGeometry(QRect(10, 30, 441, 31));
+		label = new QLabel(centralWidget);
+		label->setObjectName(QString::fromUtf8("label"));
+		label->setGeometry(QRect(10, 10, 81, 16));
+		label_2 = new QLabel(centralWidget);
+		label_2->setObjectName(QString::fromUtf8("label_2"));
+		label_2->setGeometry(QRect(10, 70, 50, 12));
+		PlayFileBrouser = new QTextBrowser(centralWidget);
+		PlayFileBrouser->setObjectName(QString::fromUtf8("PlayFileBrouser"));
+		PlayFileBrouser->setGeometry(QRect(10, 90, 441, 31));
+		PlayButton = new QPushButton(centralWidget);
+		PlayButton->setObjectName(QString::fromUtf8("PlayButton"));
+		PlayButton->setGeometry(QRect(20, 140, 131, 51));
+		StopButton = new QPushButton(centralWidget);
+		StopButton->setObjectName(QString::fromUtf8("StopButton"));
+		StopButton->setEnabled(false);
+		StopButton->setGeometry(QRect(20, 200, 131, 51));
+		PauseButton = new QPushButton(centralWidget);
+		PauseButton->setObjectName(QString::fromUtf8("PauseButton"));
+		PauseButton->setEnabled(false);
+		PauseButton->setGeometry(QRect(20, 260, 131, 51));
+		groupBox = new QGroupBox(centralWidget);
+		groupBox->setObjectName(QString::fromUtf8("groupBox"));
+		groupBox->setGeometry(QRect(160, 130, 291, 181));
+		RevEnable = new QPushButton(groupBox);
+		RevEnable->setObjectName(QString::fromUtf8("RevEnable"));
+		RevEnable->setEnabled(false);
+		RevEnable->setGeometry(QRect(20, 150, 75, 23));
+		RevDisable = new QPushButton(groupBox);
+		RevDisable->setObjectName(QString::fromUtf8("RevDisable"));
+		RevDisable->setGeometry(QRect(110, 150, 75, 23));
+		RevApply = new QPushButton(groupBox);
+		RevApply->setObjectName(QString::fromUtf8("RevApply"));
+		RevApply->setGeometry(QRect(200, 150, 75, 23));
+		DelayTimeBox = new QDoubleSpinBox(groupBox);
+		DelayTimeBox->setObjectName(QString::fromUtf8("DelayTimeBox"));
+		DelayTimeBox->setGeometry(QRect(170, 30, 91, 22));
+		DelayTimeBox->setMinimum(50.000000000000000);
+		DelayTimeBox->setMaximum(2000.000000000000000);
+		DelayTimeBox->setValue(250.000000000000000);
+		label_3 = new QLabel(groupBox);
+		label_3->setObjectName(QString::fromUtf8("label_3"));
+		label_3->setGeometry(QRect(20, 30, 81, 16));
+		label_4 = new QLabel(groupBox);
+		label_4->setObjectName(QString::fromUtf8("label_4"));
+		label_4->setGeometry(QRect(20, 70, 71, 16));
+		label_5 = new QLabel(groupBox);
+		label_5->setObjectName(QString::fromUtf8("label_5"));
+		label_5->setGeometry(QRect(20, 110, 91, 16));
+		DecayLevelBox = new QDoubleSpinBox(groupBox);
+		DecayLevelBox->setObjectName(QString::fromUtf8("DecayLevelBox"));
+		DecayLevelBox->setGeometry(QRect(170, 70, 91, 22));
+		DecayLevelBox->setMaximum(1.000000000000000);
+		DecayLevelBox->setSingleStep(0.020000000000000);
+		DecayLevelBox->setValue(0.300000000000000);
+		FeedBackBox = new QDoubleSpinBox(groupBox);
+		FeedBackBox->setObjectName(QString::fromUtf8("FeedBackBox"));
+		FeedBackBox->setGeometry(QRect(170, 110, 91, 22));
+		FeedBackBox->setMaximum(1.000000000000000);
+		FeedBackBox->setSingleStep(0.020000000000000);
+		FeedBackBox->setValue(0.500000000000000);
+		ASQtClass->setCentralWidget(centralWidget);
+		menuBar = new QMenuBar(ASQtClass);
+		menuBar->setObjectName(QString::fromUtf8("menuBar"));
+		menuBar->setGeometry(QRect(0, 0, 464, 21));
+		ASQtClass->setMenuBar(menuBar);
+		mainToolBar = new QToolBar(ASQtClass);
+		mainToolBar->setObjectName(QString::fromUtf8("mainToolBar"));
+		ASQtClass->addToolBar(Qt::TopToolBarArea, mainToolBar);
+		statusBar = new QStatusBar(ASQtClass);
+		statusBar->setObjectName(QString::fromUtf8("statusBar"));
+		ASQtClass->setStatusBar(statusBar);
+
+		retranslateUi(ASQtClass);
+
+		QMetaObject::connectSlotsByName(ASQtClass);
+	} // setupUi
+
+	void retranslateUi(QMainWindow* ASQtClass)
+	{
+		ASQtClass->setWindowTitle(QCoreApplication::translate("ASQtClass", "ASQt", nullptr));
+		label->setText(QCoreApplication::translate("ASQtClass", "OutputDevice", nullptr));
+		label_2->setText(QCoreApplication::translate("ASQtClass", "PlayFile", nullptr));
+		PlayButton->setText(QCoreApplication::translate("ASQtClass", "Play", nullptr));
+		StopButton->setText(QCoreApplication::translate("ASQtClass", "Stop", nullptr));
+		PauseButton->setText(QCoreApplication::translate("ASQtClass", "Pause", nullptr));
+		groupBox->setTitle(QCoreApplication::translate("ASQtClass", "Reverb", nullptr));
+		RevEnable->setText(QCoreApplication::translate("ASQtClass", "Enable", nullptr));
+		RevDisable->setText(QCoreApplication::translate("ASQtClass", "Disable", nullptr));
+		RevApply->setText(QCoreApplication::translate("ASQtClass", "Apply", nullptr));
+		label_3->setText(QCoreApplication::translate("ASQtClass", "DelayTime", nullptr));
+		label_4->setText(QCoreApplication::translate("ASQtClass", "DecayLevel", nullptr));
+		label_5->setText(QCoreApplication::translate("ASQtClass", "FeedBackTime", nullptr));
+	} // retranslateUi
+};

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="リソース ファイル">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\AudioSystem">
+      <UniqueIdentifier>{fe1f30df-d66b-491a-aded-a52c6975d222}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\AudioDefine">
+      <UniqueIdentifier>{14e1b3c7-62d0-4ab0-a8ce-40a7147e4a17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Time">
+      <UniqueIdentifier>{020ef76c-190e-457b-a1df-096ff009c122}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Singleton">
+      <UniqueIdentifier>{64d0789a-79f0-42c0-a564-ba232b00ece9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\TrackBase">
+      <UniqueIdentifier>{933eef58-4435-40f3-aaed-27ed28d395ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\WavFile">
+      <UniqueIdentifier>{0e52729a-ac3a-4157-a9dc-bb6e1c1fc344}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\LineBuffer">
+      <UniqueIdentifier>{d57eea1a-3e31-4416-87dc-7feae9c6c215}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\EffectBase">
+      <UniqueIdentifier>{b5d1b265-fd7c-4a46-aaad-261482a31647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\DriverBase">
+      <UniqueIdentifier>{f65ff90d-69ad-44ff-964a-5eb7facc8f6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\WaveBase">
+      <UniqueIdentifier>{615231ee-c2ef-4ca0-951c-39b87d482970}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Wasapi">
+      <UniqueIdentifier>{000fe986-9a77-449a-ae1a-c31cd3b8e954}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\SourceTrack">
+      <UniqueIdentifier>{f1fe9a73-ab92-43dc-8784-84a3cc94e708}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\MasterTrack">
+      <UniqueIdentifier>{4d1b0e56-92fd-477d-bfeb-9e195583fd2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Equalizer">
+      <UniqueIdentifier>{240661e0-e42c-4602-856a-fbb813382d5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\EffectManager">
+      <UniqueIdentifier>{8c1dd606-84bf-4af7-8cce-4fd04f3ab84a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\CircularBuffer">
+      <UniqueIdentifier>{1cb007f1-e4c8-446a-ac43-b53ef92e8675}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\BiquadIIRFilter">
+      <UniqueIdentifier>{ee58ede6-887c-41b7-ae52-c2cfde5fbb5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Log">
+      <UniqueIdentifier>{47483274-db49-439e-8bd5-3b9cc1b2e968}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\StdPtrHelper">
+      <UniqueIdentifier>{78a42e62-bb73-4362-bc22-c3301ba7113b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Utilities">
+      <UniqueIdentifier>{0ba7d493-1094-4af4-9812-b6c3fedbdc72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\CReverb">
+      <UniqueIdentifier>{4312c85e-fa94-44ff-9be4-e146179f28a5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="CAudioSystem.cpp">
+      <Filter>ソース ファイル\AudioSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="CBiquadIIRFilter.cpp">
+      <Filter>ソース ファイル\BiquadIIRFilter</Filter>
+    </ClCompile>
+    <ClCompile Include="AudioDefine.cpp">
+      <Filter>ソース ファイル\AudioDefine</Filter>
+    </ClCompile>
+    <ClCompile Include="CEffectManager.cpp">
+      <Filter>ソース ファイル\EffectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CEqualizer.cpp">
+      <Filter>ソース ファイル\Equalizer</Filter>
+    </ClCompile>
+    <ClCompile Include="CMasterTrack.cpp">
+      <Filter>ソース ファイル\MasterTrack</Filter>
+    </ClCompile>
+    <ClCompile Include="CReverb.cpp">
+      <Filter>ソース ファイル\CReverb</Filter>
+    </ClCompile>
+    <ClCompile Include="CSourceTrack.cpp">
+      <Filter>ソース ファイル\SourceTrack</Filter>
+    </ClCompile>
+    <ClCompile Include="CWasapi.cpp">
+      <Filter>ソース ファイル\Wasapi</Filter>
+    </ClCompile>
+    <ClCompile Include="CWaveBase.cpp">
+      <Filter>ソース ファイル\WaveBase</Filter>
+    </ClCompile>
+    <ClCompile Include="CWavFile.cpp">
+      <Filter>ソース ファイル\WavFile</Filter>
+    </ClCompile>
+    <ClCompile Include="CLog.cpp">
+      <Filter>ソース ファイル\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="Utilities.cpp">
+      <Filter>ソース ファイル\Utilities</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CAudioSystem.h">
+      <Filter>ソース ファイル\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="CBiquadIIRFilter.h">
+      <Filter>ソース ファイル\BiquadIIRFilter</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioDefine.h">
+      <Filter>ソース ファイル\AudioDefine</Filter>
+    </ClInclude>
+    <ClInclude Include="CCircularBuffer.h">
+      <Filter>ソース ファイル\CircularBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="CEffectManager.h">
+      <Filter>ソース ファイル\EffectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CEqualizer.h">
+      <Filter>ソース ファイル\Equalizer</Filter>
+    </ClInclude>
+    <ClInclude Include="CMasterTrack.h">
+      <Filter>ソース ファイル\MasterTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="CReverb.h">
+      <Filter>ソース ファイル\CReverb</Filter>
+    </ClInclude>
+    <ClInclude Include="CSourceTrack.h">
+      <Filter>ソース ファイル\SourceTrack</Filter>
+    </ClInclude>
+    <ClInclude Include="CWasapi.h">
+      <Filter>ソース ファイル\Wasapi</Filter>
+    </ClInclude>
+    <ClInclude Include="CWaveBase.h">
+      <Filter>ソース ファイル\WaveBase</Filter>
+    </ClInclude>
+    <ClInclude Include="CDriverBase.h">
+      <Filter>ソース ファイル\DriverBase</Filter>
+    </ClInclude>
+    <ClInclude Include="CEffectBase.h">
+      <Filter>ソース ファイル\EffectBase</Filter>
+    </ClInclude>
+    <ClInclude Include="CLineBuffer.h">
+      <Filter>ソース ファイル\LineBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="CWavFile.h">
+      <Filter>ソース ファイル\WavFile</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrackBase.h">
+      <Filter>ソース ファイル\TrackBase</Filter>
+    </ClInclude>
+    <ClInclude Include="CSingleton.h">
+      <Filter>ソース ファイル\Singleton</Filter>
+    </ClInclude>
+    <ClInclude Include="CTIme.h">
+      <Filter>ソース ファイル\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="CLog.h">
+      <Filter>ソース ファイル\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="CStdPtrHelper.h">
+      <Filter>ソース ファイル\StdPtrHelper</Filter>
+    </ClInclude>
+    <ClInclude Include="Utilities.h">
+      <Filter>ソース ファイル\Utilities</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
