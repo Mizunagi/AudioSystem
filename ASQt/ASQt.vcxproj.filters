@@ -41,27 +41,36 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ReverbWindow.cpp">
+    <ClCompile Include="ReverbUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EqualizerWindow.cpp">
+    <ClCompile Include="EqualizerUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PreferenceUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="Reverb.ui">
-      <Filter>Resource Files</Filter>
-    </QtUic>
-    <QtUic Include="Equalizer.ui">
-      <Filter>Resource Files</Filter>
-    </QtUic>
+    <QtMoc Include="ReverbUI.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="EqualizerUI.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="PreferenceUI.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ReverbWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <QtMoc Include="EqualizerWindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
+    <QtUic Include="ReverbUI.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="EqualizerUI.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="PreferenceUI.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
 </Project>

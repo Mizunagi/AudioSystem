@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}</ProjectGuid>
+    <ProjectGuid>{9E22CAF9-0FE6-4192-B9F4-57D151396410}</ProjectGuid>
     <Keyword>QtVS_v303</Keyword>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
     <WindowsTargetPlatformVersion Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">10.0.18362.0</WindowsTargetPlatformVersion>
@@ -43,23 +43,9 @@
     <Import Project="$(QtMsBuild)\qt_defaults.props" />
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <IncludePath>C:\Users\水薙優維\Desktop\AudioSystem\AudioSystem;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\水薙優維\Desktop\AudioSystem\x64\Debug;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <IncludePath>C:\Users\水薙優維\Desktop\AudioSystem\AudioSystem;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\水薙優維\Desktop\AudioSystem\x64\Release;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <Link>
-      <AdditionalDependencies>AudioSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <Link>
-      <AdditionalDependencies>AudioSystem.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>msvc_2019x64</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
@@ -100,21 +86,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="EqualizerWindow.cpp" />
-    <ClCompile Include="ReverbWindow.cpp" />
+    <ClCompile Include="EqualizerUI.cpp" />
+    <ClCompile Include="PreferenceUI.cpp" />
+    <ClCompile Include="ReverbUI.cpp" />
     <QtRcc Include="ASQt.qrc" />
     <QtUic Include="ASQt.ui" />
     <QtMoc Include="ASQt.h" />
     <ClCompile Include="ASQt.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="Equalizer.ui" />
-    <QtUic Include="Reverb.ui" />
+    <QtUic Include="EqualizerUI.ui" />
+    <QtUic Include="PreferenceUI.ui" />
+    <QtUic Include="ReverbUI.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="ReverbWindow.h" />
+    <QtMoc Include="ReverbUI.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="EqualizerWindow.h" />
+    <QtMoc Include="EqualizerUI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="PreferenceUI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

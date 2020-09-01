@@ -10,10 +10,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj",
 		{F033138A-8D12-4290-ADED-B94A1B821DA9} = {F033138A-8D12-4290-ADED-B94A1B821DA9}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ASQt", "ASQt\ASQt.vcxproj", "{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}"
-	ProjectSection(ProjectDependencies) = postProject
-		{F033138A-8D12-4290-ADED-B94A1B821DA9} = {F033138A-8D12-4290-ADED-B94A1B821DA9}
-	EndProjectSection
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ASQt", "ASQt\ASQt.vcxproj", "{9E22CAF9-0FE6-4192-B9F4-57D151396410}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,12 +36,12 @@ Global
 		{10918024-5CA7-4960-9151-2DFF58207026}.Release|x64.Build.0 = Release|x64
 		{10918024-5CA7-4960-9151-2DFF58207026}.Release|x86.ActiveCfg = Release|Win32
 		{10918024-5CA7-4960-9151-2DFF58207026}.Release|x86.Build.0 = Release|Win32
-		{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}.Debug|x64.ActiveCfg = Debug|x64
-		{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}.Debug|x64.Build.0 = Debug|x64
-		{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}.Debug|x86.ActiveCfg = Debug|x64
-		{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}.Release|x64.ActiveCfg = Release|x64
-		{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}.Release|x64.Build.0 = Release|x64
-		{3C61B3D4-55FD-49AD-8CB4-24B97717BDA1}.Release|x86.ActiveCfg = Release|x64
+		{9E22CAF9-0FE6-4192-B9F4-57D151396410}.Debug|x64.ActiveCfg = Debug|x64
+		{9E22CAF9-0FE6-4192-B9F4-57D151396410}.Debug|x64.Build.0 = Debug|x64
+		{9E22CAF9-0FE6-4192-B9F4-57D151396410}.Debug|x86.ActiveCfg = Debug|x64
+		{9E22CAF9-0FE6-4192-B9F4-57D151396410}.Release|x64.ActiveCfg = Release|x64
+		{9E22CAF9-0FE6-4192-B9F4-57D151396410}.Release|x64.Build.0 = Release|x64
+		{9E22CAF9-0FE6-4192-B9F4-57D151396410}.Release|x86.ActiveCfg = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

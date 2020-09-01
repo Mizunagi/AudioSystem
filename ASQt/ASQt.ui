@@ -6,100 +6,101 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>512</width>
-    <height>220</height>
+    <width>600</width>
+    <height>400</height>
    </rect>
-  </property>
-  <property name="acceptDrops">
-   <bool>true</bool>
   </property>
   <property name="windowTitle">
    <string>ASQt</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="m_StopButton">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>10</y>
-      <width>81</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>OutputDevice</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="OutputDeviceSelector">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>491</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>50</width>
-      <height>12</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PlayFile</string>
-    </property>
-   </widget>
-   <widget class="QTextBrowser" name="PlayFileBrouser">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>491</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="PlayButton">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>120</y>
+      <x>270</x>
+      <y>290</y>
       <width>111</width>
       <height>41</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Play</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="StopButton">
-    <property name="geometry">
-     <rect>
-      <x>200</x>
-      <y>120</y>
-      <width>111</width>
-      <height>41</height>
-     </rect>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>16</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Stop</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="PauseButton">
+   <widget class="QSlider" name="m_VolumeSlider">
     <property name="geometry">
      <rect>
-      <x>340</x>
-      <y>120</y>
+      <x>400</x>
+      <y>300</y>
+      <width>181</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="maximum">
+     <number>200</number>
+    </property>
+    <property name="value">
+     <number>100</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="m_PlayButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>290</y>
       <width>111</width>
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Play</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="m_PauseButton">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>290</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Consolas</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
     <property name="text">
      <string>Pause</string>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="m_PlayList">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>581</width>
+      <height>271</height>
+     </rect>
+    </property>
+    <property name="acceptDrops">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -108,17 +109,23 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>512</width>
+     <width>600</width>
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+   </widget>
    <widget class="QMenu" name="menuDSP">
     <property name="title">
      <string>DSP</string>
     </property>
-    <addaction name="actionReverb"/>
     <addaction name="actionEqualizer"/>
+    <addaction name="actionReverb"/>
    </widget>
+   <addaction name="menuFile"/>
    <addaction name="menuDSP"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -130,14 +137,14 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionReverb">
-   <property name="text">
-    <string>Reverb</string>
-   </property>
-  </action>
   <action name="actionEqualizer">
    <property name="text">
     <string>Equalizer</string>
+   </property>
+  </action>
+  <action name="actionReverb">
+   <property name="text">
+    <string>Reverb</string>
    </property>
   </action>
  </widget>

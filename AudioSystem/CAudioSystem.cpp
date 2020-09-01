@@ -30,9 +30,8 @@ void CAudioSystem::RenderThread() {
 		renderBuffer.zeroclear();
 
 		if (SPMasterTrack master = m_MasterTrack.lock()) {
-			if (master->GetSourceSize() > 0) {
+			if (master->GetSourceSize() > 0)
 				master->GetBuffer(renderBuffer, renderFrames);
-			}
 		}
 
 		m_RenderDriver->Process(renderBuffer, static_cast<int32_t>(renderFrames));
@@ -49,9 +48,15 @@ bool CAudioSystem::LunchDevice(EDriverMode _mode, LunchInfo& _info) {
 	if (instance != nullptr && instance->LunchDevice(_info)) {
 		switch (_info.lunchDevice.driverMode) {
 		case EDriverMode::AS_DRIVERMODE_RENDER:
+			if (m_RenderDriver) {
+				Release(EDriverMode::AS_DRIVERMODE_RENDER);
+			}
 			m_RenderDriver = std::move(instance);
 			return true;
 		case EDriverMode::AS_DRIVERMODE_CAPTURE:
+			if (m_CaptureDriver) {
+				Release(EDriverMode::AS_DRIVERMODE_CAPTURE);
+			}
 			m_CaptureDriver = std::move(instance);
 			return true;
 		}
@@ -60,6 +65,8 @@ bool CAudioSystem::LunchDevice(EDriverMode _mode, LunchInfo& _info) {
 }
 
 bool CAudioSystem::SetupDevice(EDriverMode _mode, SetupInfo& _info) {
+	if (!m_RenderDriver || !m_CaptureDriver) {
+	}
 	switch (_mode) {
 	case EDriverMode::AS_DRIVERMODE_RENDER:
 		return m_RenderDriver->SetupDevice(_info);
@@ -96,7 +103,6 @@ bool CAudioSystem::Stop(EDriverMode _mode, StopInfo& _info) {
 			m_RenderThread.join();
 			return m_RenderDriver->Stop(_info);
 		}
-		return m_RenderDriver->Stop(_info);
 	case EDriverMode::AS_DRIVERMODE_CAPTURE:
 		if (m_CaptureDriver && m_CaptureThread.joinable()) {
 			m_bCaptureLoop = false;
