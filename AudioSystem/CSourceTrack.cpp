@@ -59,7 +59,7 @@ void CSourceTrack::SourceIOThread() {
 }
 
 void CSourceTrack::Bind(const std::shared_ptr<CWaveBase> _wave) {
-	if (m_PlayState == EPlayState::AS_PLAYSTATE_PLAY || m_PlayState == EPlayState::AS_PLAYSTATE_PAUSE || m_PlayState == EPlayState::AS_PLAYSTATE_STOPNEXT || m_PlayState == EPlayState::AS_PLAYSTATE_STOPREADY) {
+	if (m_PlayState == EPlayState::AS_PLAYSTATE_PLAY || m_PlayState == EPlayState::AS_PLAYSTATE_PAUSE || m_PlayState == EPlayState::AS_PLAYSTATE_LASTFRAME || m_PlayState == EPlayState::AS_PLAYSTATE_LASTBUFFER) {
 		Stop();
 	}
 	if (_wave && m_PlayState == EPlayState::AS_PLAYSTATE_NONE || m_PlayState == EPlayState::AS_PLAYSTATE_STOP) {
@@ -73,7 +73,7 @@ void CSourceTrack::Bind(const std::shared_ptr<CWaveBase> _wave) {
 }
 
 void CSourceTrack::Play(int32_t _loop) {
-	m_Loop = _loop > 0 ? _loop : _loop == LOOP_INFINITY ? LOOP_INFINITY : 1;
+	m_Loop = _loop >= 0 ? _loop : _loop == LOOP_INFINITY ? LOOP_INFINITY : 0;
 	if (m_PlayState == EPlayState::AS_PLAYSTATE_STOP) {
 		m_PlayState = EPlayState::AS_PLAYSTATE_PLAY;
 		CLog::Log(CLog::ASLOG_INFO, std::string(typeid(CSourceTrack).name()), __func__, "", "");
@@ -86,7 +86,7 @@ void CSourceTrack::Play(int32_t _loop) {
 }
 
 void CSourceTrack::Pause() {
-	if (m_PlayState == EPlayState::AS_PLAYSTATE_PLAY || m_PlayState == EPlayState::AS_PLAYSTATE_STOPNEXT || m_PlayState == EPlayState::AS_PLAYSTATE_STOPREADY) {
+	if (m_PlayState == EPlayState::AS_PLAYSTATE_PLAY || m_PlayState == EPlayState::AS_PLAYSTATE_LASTFRAME || m_PlayState == EPlayState::AS_PLAYSTATE_LASTBUFFER) {
 		m_TempState = m_PlayState;
 		m_PlayState = EPlayState::AS_PLAYSTATE_PAUSE;
 		CLog::Log(CLog::ASLOG_INFO, std::string(typeid(CSourceTrack).name()), __func__, "", "");
@@ -94,7 +94,7 @@ void CSourceTrack::Pause() {
 }
 
 void CSourceTrack::Stop() {
-	if (m_PlayState == EPlayState::AS_PLAYSTATE_PLAY || m_PlayState == EPlayState::AS_PLAYSTATE_PAUSE || m_PlayState == EPlayState::AS_PLAYSTATE_STOPNEXT || m_PlayState == EPlayState::AS_PLAYSTATE_STOPREADY) {
+	if (m_PlayState == EPlayState::AS_PLAYSTATE_PLAY || m_PlayState == EPlayState::AS_PLAYSTATE_PAUSE || m_PlayState == EPlayState::AS_PLAYSTATE_LASTFRAME || m_PlayState == EPlayState::AS_PLAYSTATE_LASTBUFFER) {
 		m_PlayState = EPlayState::AS_PLAYSTATE_STOP;
 		m_TempState = EPlayState::AS_PLAYSTATE_NONE;
 		m_LoadCursor = m_SendCuesor = 0;
@@ -153,25 +153,26 @@ size_t CSourceTrack::GetBuffer(CLineBuffer<float>& _buffer, uint32_t _frames) {
 			uint32_t beginFrames = _frames - endFrames;
 			rmd_copy(_buffer, primaty.trackBuffer, 0, m_SendCuesor, endFrames);
 
-			if (m_PlayState != EPlayState::AS_PLAYSTATE_STOPREADY) {
+			if (m_PlayState != EPlayState::AS_PLAYSTATE_LASTBUFFER) {
 				rmd_swap(primaty, secondry);
 				rmd_copy(_buffer, primaty.trackBuffer, endFrames, 0, beginFrames);
 				m_SendCuesor = beginFrames;
-				if (m_PlayState != EPlayState::AS_PLAYSTATE_STOPNEXT) {
+				if (m_PlayState != EPlayState::AS_PLAYSTATE_LASTFRAME) {
 					m_sIOReqQue.push(IORequest(*this, secondry));
 					m_sIOVariable.notify_one();
 				}
 				else {
-					m_PlayState = EPlayState::AS_PLAYSTATE_STOPREADY;
+					m_PlayState = EPlayState::AS_PLAYSTATE_LASTBUFFER;
 				}
 				rmd_avx_mul(_buffer, m_Format, m_Volume);
 			}
 			else {
 				//end play
 				m_PlayState = EPlayState::AS_PLAYSTATE_STOP;
-				m_LoadCursor = m_SendCuesor = 0;
+				m_LoadCursor = m_SendCuesor = m_Loop = 0;
 				for (auto& track : m_Track)
 					track.trackBuffer.zeroclear();
+				if (m_StopCallback)m_StopCallback();
 			}
 		}
 	}
@@ -194,13 +195,14 @@ void CSourceTrack::Load(uint32_t _loadFrames, CLineBuffer<float>& _buffer) {
 			uint32_t endFrame = waveInfo.allFrames - m_LoadCursor;
 			uint32_t beginFrame = _loadFrames - endFrame;
 			wav->GetBuffer(_buffer, 0, m_LoadCursor, endFrame);
-			if (m_Loop == LOOP_INFINITY || m_Loop-- > 0) {
+			if (m_Loop == LOOP_INFINITY || m_Loop > 0) {
 				wav->GetBuffer(_buffer, endFrame, 0, beginFrame);
 				m_LoadCursor = beginFrame;
 				m_PlayState = EPlayState::AS_PLAYSTATE_PLAY;
+				m_Loop--;
 			}
 			else if (m_Loop == 0) {
-				m_PlayState = EPlayState::AS_PLAYSTATE_STOPNEXT;
+				m_PlayState = EPlayState::AS_PLAYSTATE_LASTFRAME;
 				m_LoadCursor = 0;
 			}
 		}

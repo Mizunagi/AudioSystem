@@ -10,8 +10,8 @@ enum class EPlayState {
 	AS_PLAYSTATE_NONE = 0,	//状態なし(NoBindWavedata)
 	AS_PLAYSTATE_PLAY,		//再生中
 	AS_PLAYSTATE_PAUSE,		//一時停止中
-	AS_PLAYSTATE_STOPNEXT,	//次バッファで終了
-	AS_PLAYSTATE_STOPREADY,	//現在バッファで終了
+	AS_PLAYSTATE_LASTFRAME,	//現在フレームで終了
+	AS_PLAYSTATE_LASTBUFFER,//現在バッファで終了
 	AS_PLAYSTATE_STOP 		//停止中
 };
 
@@ -33,6 +33,7 @@ public:
 	void Stop();
 	EPlayState GetState() { return m_PlayState; }
 	bool IsBinding() { return !m_Wave.expired() ? true : false; }
+	void If_Stop(std::function<void(void)> _stopCall) { m_StopCallback = _stopCall; }
 private:
 	enum class ETrackNum {
 		NONE = -1,
@@ -69,6 +70,7 @@ private:
 	uint32_t m_UseTrack = 0;
 	int32_t m_Loop = 0;
 	std::weak_ptr<CWaveBase> m_Wave;
+	std::function<void(void)> m_StopCallback;
 
 	uint32_t m_LoadCursor = 0;
 	uint32_t m_SendCuesor = 0;

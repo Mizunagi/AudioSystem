@@ -11,6 +11,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj",
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ASQt", "ASQt\ASQt.vcxproj", "{9E22CAF9-0FE6-4192-B9F4-57D151396410}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F033138A-8D12-4290-ADED-B94A1B821DA9} = {F033138A-8D12-4290-ADED-B94A1B821DA9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

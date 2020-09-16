@@ -25,6 +25,7 @@
 #include <array>
 #include <filesystem>
 #include <numbers>
+#include <functional>
 
 #define _USE_MATH_DEFINES
 #include <math.h>

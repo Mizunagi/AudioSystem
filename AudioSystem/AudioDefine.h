@@ -8,7 +8,7 @@
 #define _TEST_ false
 
 #define BITPERBYTE 8
-#define VOLUME_MAX 1.0f
+#define VOLUME_MAX 2.0f
 #define VOLUME_MIN 0.0f
 #define LOOP_INFINITY -1
 #define NOPADDING -1

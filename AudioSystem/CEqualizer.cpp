@@ -43,6 +43,7 @@ void CEqualizer::SetEffectParam(EffectParam& _param) {
 			break;
 		}
 		fil._buffers.resize(m_Format.channel);
+		cntParam++;
 	}
 }
 
@@ -212,24 +213,30 @@ IIRCoefficients	CEqualizer::AllPass(float	centerFreq, float	q, uint32_t	sampling
 
 void CEqualizer::Process(CLineBuffer<float>& _buffer, uint32_t _rednerFrames) {
 	std::lock_guard lock(m_ParamMutex);
-
 	for (uint16_t chan = 0; chan < m_Format.channel; ++chan) {
 		for (uint32_t frame = 0; frame < _rednerFrames; ++frame) {
+			float temp = _buffer[chan][frame];
 			for (auto& fil : m_Filters) {
-				float dest = Enable() ?
-					fil._coefficients._beta[0] / fil._coefficients._alpha[0] * _buffer[chan][frame] +
-					fil._coefficients._beta[1] / fil._coefficients._alpha[0] * fil._buffers[chan]._src[0] +
-					fil._coefficients._beta[2] / fil._coefficients._alpha[0] * fil._buffers[chan]._src[1] -
-					fil._coefficients._alpha[1] / fil._coefficients._alpha[0] * fil._buffers[chan]._dest[0] -
-					fil._coefficients._alpha[2] / fil._coefficients._alpha[0] * fil._buffers[chan]._dest[1]
-					: _buffer[chan][frame];
+				auto coef = fil._coefficients;
+				auto filBuf = fil._buffers[chan];
 
-				fil._buffers[chan]._src[1] = fil._buffers[chan]._src[0];
-				fil._buffers[chan]._src[0] = _buffer[chan][frame];
+				float dest =
+					coef._beta[0] / coef._alpha[0] * temp +
+					coef._beta[1] / coef._alpha[0] * filBuf._src[0] +
+					coef._beta[2] / coef._alpha[0] * filBuf._src[1] -
+					coef._alpha[1] / coef._alpha[0] * filBuf._dest[0] -
+					coef._alpha[2] / coef._alpha[0] * filBuf._dest[1];
 
-				fil._buffers[chan]._dest[1] = fil._buffers[chan]._dest[0];
-				fil._buffers[chan]._dest[0] = _buffer[chan][frame] = dest;
+				filBuf._src[1] = filBuf._src[0];
+				filBuf._src[0] = temp;
+
+				filBuf._dest[1] = filBuf._dest[0];
+				filBuf._dest[0] = dest;
+
+				temp = dest;
 			}
+			if (Enable())
+				_buffer[chan][frame] = temp;
 		}
 	}
 }

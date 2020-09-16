@@ -10,11 +10,17 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="acceptDrops">
+   <bool>true</bool>
+  </property>
   <property name="windowTitle">
    <string>ASQt</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QPushButton" name="m_StopButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>270</x>
@@ -72,6 +78,9 @@
     </property>
    </widget>
    <widget class="QPushButton" name="m_PauseButton">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>140</x>
@@ -100,7 +109,7 @@
      </rect>
     </property>
     <property name="acceptDrops">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
