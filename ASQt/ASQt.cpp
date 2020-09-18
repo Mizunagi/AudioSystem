@@ -92,9 +92,9 @@ void ASQt::Play() {
 	Stop();
 	m_Source->If_Stop([this]() {
 		int currentRow = m_ui.m_PlayList->currentRow();
-		auto listSize = m_ui.m_PlayList->contentsSize();
+		int listSize = m_ui.m_PlayList->count();
 
-		if (++currentRow) {
+		if (++currentRow < listSize) {
 			m_ui.m_PlayList->setCurrentRow(currentRow);
 			if (CWavFile::CreateInstance(m_FilePaths[currentRow], EHoldMode::WAVE_HOLDMODE_STREAM, m_Wave)) {
 				m_ui.m_StopButton->setEnabled(true);
@@ -105,9 +105,9 @@ void ASQt::Play() {
 			}
 		}
 		else {
-			m_ui.m_PlayButton->setEnabled(true);
-			m_ui.m_PauseButton->setEnabled(false);
 			m_ui.m_StopButton->setEnabled(false);
+			m_ui.m_PauseButton->setEnabled(false);
+			m_ui.m_PlayButton->setEnabled(true);
 		}
 		});
 

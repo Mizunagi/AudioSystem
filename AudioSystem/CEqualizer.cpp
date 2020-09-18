@@ -15,7 +15,7 @@ void CEqualizer::SetEffectParam(EffectParam& _param) {
 	}
 
 	for (uint16_t cntParam = 0; auto & fil : m_Filters) {
-		auto oneParam = param.params[cntParam];
+		auto& oneParam = param.params[cntParam];
 		switch (oneParam._type) {
 		case EQType::EQTYPE_LOWPASS:
 			fil._coefficients = LowPass(oneParam._freq, oneParam._q, m_Format.samplingrate);
@@ -43,7 +43,7 @@ void CEqualizer::SetEffectParam(EffectParam& _param) {
 			break;
 		}
 		fil._buffers.resize(m_Format.channel);
-		cntParam++;
+		++cntParam;
 	}
 }
 
